@@ -26,7 +26,7 @@
                 @foreach($noticias as $noticia)
                 <tr>
                     <td>
-                        {{$noticia->titulo]}}
+                        {{$noticia->titulo}}
                     </td>
 
                     <td>
