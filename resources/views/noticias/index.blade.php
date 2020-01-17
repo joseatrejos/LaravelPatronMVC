@@ -14,6 +14,9 @@
             // var_dump($noticias) 
         @endphp
         <table>
+            <caption>
+                Noticias <br/><br/>
+            </caption>
             <thead>
                 <th>
                     Titulo
@@ -30,9 +33,9 @@
                     </td>
 
                     <td>
-                        <button>
+                        <a href="{{route('noticias.show', $noticia -> id)}}">
                             Leer más...
-                        </button>
+                        </a>
                     </td>
                 </tr>
                 @endforeach

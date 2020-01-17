@@ -15,4 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
                      // Controller, after @, it's the function in the Controller
-Route::get('/noticias', 'NoticiaController@index');
+Route::get('/noticias', 'NoticiaController@index') -> name('noticias.index');
+Route::get('/noticias', 'NoticiaController@index') -> name('noticias.show');
+
+
+Route::get('/noticias/{id}', 'NoticiaController@show');
+
