@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="plugins/summernote/summernote-bs4.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    @yield('maincss')
   </head>
   <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
@@ -47,7 +48,7 @@
           </li>
         </ul>
 
-        <!-- SEARCH FORM -->
+        <!-- SEARCH FORM >
         <form class="form-inline ml-3">
           <div class="input-group input-group-sm">
             <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
@@ -57,11 +58,11 @@
               </button>
             </div>
           </div>
-        </form>
+        </form-->
 
-        <!-- Right navbar links -->
+        <!-- Right navbar links >
         <ul class="navbar-nav ml-auto">
-          <!-- Messages Dropdown Menu -->
+          <!-- Messages Dropdown Menu>
           <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
               <i class="far fa-comments"></i>
@@ -69,7 +70,7 @@
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
               <a href="#" class="dropdown-item">
-                <!-- Message Start -->
+                <!-- Message Start >
                 <div class="media">
                   <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
                   <div class="media-body">
@@ -81,11 +82,11 @@
                     <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
                   </div>
                 </div>
-                <!-- Message End -->
+                <!-- Message End >
               </a>
               <div class="dropdown-divider"></div>
               <a href="#" class="dropdown-item">
-                <!-- Message Start -->
+                <!-- Message Start >
                 <div class="media">
                   <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
                   <div class="media-body">
@@ -97,11 +98,11 @@
                     <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
                   </div>
                 </div>
-                <!-- Message End -->
+                <!-- Message End >
               </a>
               <div class="dropdown-divider"></div>
               <a href="#" class="dropdown-item">
-                <!-- Message Start -->
+                <!-- Message Start >
                 <div class="media">
                   <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
                   <div class="media-body">
@@ -113,13 +114,13 @@
                     <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
                   </div>
                 </div>
-                <!-- Message End -->
+                <!-- Message End >
               </a>
               <div class="dropdown-divider"></div>
               <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
             </div>
           </li>
-          <!-- Notifications Dropdown Menu -->
+          <!-- Notifications Dropdown Menu >
           <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
               <i class="far fa-bell"></i>
@@ -151,9 +152,9 @@
               <i class="fas fa-th-large"></i>
             </a>
           </li>
-        </ul>
+        </ul-->
       </nav>
-      <!-- /.navbar -->
+      <!-- /.navbar>
 
       <!-- Main Sidebar Container -->
       <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -161,7 +162,7 @@
         <a href="index3.html" class="brand-link">
           <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
               style="opacity: .8">
-          <span class="brand-text font-weight-light">AdminLTE 3</span>
+          <span class="brand-text font-weight-light">Ludens Productions</span>
         </a>
 
         <!-- Sidebar -->
@@ -192,7 +193,7 @@
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-table"></i>
                     <p>
-                      Tables
+                      Noticias
                       <i class="fas fa-angle-left right"></i>
                   </p>
                 </a>
@@ -200,19 +201,7 @@
                   <li class="nav-item">
                     <a href="pages/tables/simple.html" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Tabla 1</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="pages/tables/data.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Tabla 2</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="pages/tables/jsgrid.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Tabla 3</p>
+                      <p>@yield('Noticias')</p>
                     </a>
                   </li>
                 </ul>
@@ -239,12 +228,12 @@
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
-                <h1 class="m-0 text-dark">Dashboard</h1>
+                <h1 class="m-0 text-dark">@yield('subtitulo')</h1>
               </div><!-- /.col -->
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                   <li class="breadcrumb-item"><a href="#">Home</a></li>
-                  <li class="breadcrumb-item active">Dashboard v1</li>
+                  <li class="breadcrumb-item active">@yield('titulo')</li>
                 </ol>
               </div><!-- /.col -->
             </div><!-- /.row -->
@@ -260,7 +249,7 @@
       </div>
       <!-- /.content-wrapper -->
       <footer class="main-footer">
-        <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
+        <strong>Copyright &copy; 2014-2019.</strong>
         All rights reserved.
         <div class="float-right d-none d-sm-inline-block">
           <b>Version</b> 3.0.2
@@ -310,7 +299,7 @@
     <!-- AdminLTE for demo purposes -->
     <script src="dist/js/demo.js"></script>
 
-
+    @yield('mainjs')
     <script>
       function doClickLinkLogout(e)
       {
