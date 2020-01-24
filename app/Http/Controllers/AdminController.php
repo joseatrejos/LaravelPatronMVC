@@ -10,4 +10,8 @@ class AdminController extends Controller
                 // view( directory.file )
         return view('admin.dashboard');
     }
+
+    public function __construct() {
+        $this -> middleware('auth');
+    }
 }
