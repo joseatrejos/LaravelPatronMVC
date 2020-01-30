@@ -11,9 +11,12 @@
 |
 */
             // Controller@function, -> (directory.function)
-Route::get('/', 'NoticiaController@index') -> name('noticias.index');
-Route::get('/noticias/{id}', 'NoticiaController@show') -> name('noticias.show');
+Route::get('/', 'NoticiaController@index') -> name('front.noticias.index');
+Route::get('/noticias/{id}', 'NoticiaController@show') -> name('front.noticias.show');
 
 Route::get('/admin', 'AdminController@dashboard') -> name('admin.dashboard');
 
 Auth::routes(['register' => false]);
+
+// Atajo para establecer las 7 rutas básicas de un recurso
+Route::resource('admin/noticias', 'Admin\NoticiaController');
