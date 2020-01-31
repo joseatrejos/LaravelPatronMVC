@@ -75,7 +75,11 @@ class NoticiaController extends Controller
      */
     public function edit($id)
     {
-        
+        // find primary key
+        $noticia = Noticia::find($id);
+        $argumentos = array();
+        $argumentos['noticia'] = $noticia;
+        return view('admin.noticias.edit', $argumentos);
     }
 
     /**
