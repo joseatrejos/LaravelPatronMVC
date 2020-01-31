@@ -6,7 +6,7 @@
 @endsection
 
 
-@section('titulo', 'Administración | Titulo')
+@section('titulo', 'Administración | Ludens Productions')
 @section('subtitulo', 'Lista de Noticias')
 
 
@@ -26,9 +26,9 @@
                     </h3>
                 </div-->
                 <div class="card-body">
-                    <button class="btn btn-primary">
+                    <a href="{{route('noticias.create')}}" class="btn btn-primary">
                         <i class="fas fa-plus"></i> Agregar Noticia
-                    </button>
+                    </a>
                     <table class="table">
                         <thead>
                             <tr>

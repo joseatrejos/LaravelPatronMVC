@@ -9,6 +9,11 @@ use App\Noticia;
 
 class NoticiaController extends Controller
 {
+    public function __construct()
+    {
+        $this -> middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -29,7 +34,7 @@ class NoticiaController extends Controller
      */
     public function create()
     {
-        
+        return view('admin.noticias.create');
     }
 
     /**
@@ -40,7 +45,15 @@ class NoticiaController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $noticia = new Noticia();
+        $noticia -> titulo = $request -> input('txtTitulo');
+        $noticia -> cuerpo = $request -> input('txtCuerpo');
+        if($noticia -> save())
+        {
+            return redirect() -> route('noticias.index') -> with('success', 'La noticia fue guardada correctamente');
+        }
+        // In case the if() does not finish the execution of the code with the return, then cookies will be used to validate 
+        return redirect() -> route('noticias.index') -> with('failure', 'La noticia no pudo ser guardada correctamente');
     }
 
     /**
