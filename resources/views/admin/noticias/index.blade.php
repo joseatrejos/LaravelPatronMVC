@@ -44,7 +44,7 @@
                     </h3>
                 </div-->
                 <div class="card-body">
-                    <a href="{{route('noticias.create')}}" class="btn btn-primary">
+                    <a href="{{ route('noticias.create') }}" class="btn btn-primary">
                         <i class="fas fa-plus"></i> Agregar Noticia
                     </a>
                     <table class="table">

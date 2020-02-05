@@ -26,8 +26,9 @@
                     </h3>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="{{route('noticias.store')}}">
+                    <form method="POST" action="{{route('noticias.update', $noticia -> id)}}">
                         @csrf
+                        @method('PUT')
                         <div class="form-group">
                             <label>
                                 Título
@@ -41,12 +42,12 @@
                                 Cuerpo
                             </label>
                             
-                            <textarea rows="12" name="txtCuerpo" class="form-control" value="{{ $noticia -> contenido }}"></textarea>
+                            <textarea rows="12" name="txtCuerpo" class="form-control" placeholder="{{ $noticia -> content }}"></textarea>
                         </div>
 
                         <div class="form-group">
                             <button class="btn btn-primary" >
-                                Guardar
+                                Actualizar
                             </button>
                         </div>
                     </form>

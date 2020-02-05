@@ -52,7 +52,7 @@ class NoticiaController extends Controller
         {
             return redirect() -> route('noticias.index') -> with('success', 'La noticia fue guardada correctamente');
         }
-        // In case the if() does not finish the execution of the code with the return, then cookies will be used to validate 
+        // In case the if() doesn't finish the execution of the code with the return, then cookies will be used to validate 
         return redirect() -> route('noticias.index') -> with('failure', 'La noticia no pudo ser guardada correctamente');
     }
 
@@ -75,7 +75,7 @@ class NoticiaController extends Controller
      */
     public function edit($id)
     {
-        // find primary key
+        // Find primary key
         $noticia = Noticia::find($id);
         $argumentos = array();
         $argumentos['noticia'] = $noticia;
@@ -91,7 +91,21 @@ class NoticiaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // Busca un registro a partir de la llave primaria (SELECT * FROM Noticia)
+        $noticia = Noticia::find($id);
+        if($noticia)
+        {
+            $noticia -> titulo = $request -> input('txtTitulo');
+            $noticia -> cuerpo = $request -> input('txtCuerpo');
+            if($noticia -> save())
+            {
+                return redirect() -> route('noticias.edit', $id) -> with('exito', 'La noticia se actualizó exitosamente');
+            }
+            // If noticia can't be updated
+            return redirect() -> route('noticias.edit', $id) -> with('error', 'No se pudo actualizar la noticia');
+        }
+        // If noticia isn't even found
+        return redirect() -> route('noticias.index') -> with('error', 'No se encontró la noticia');
     }
 
     /**

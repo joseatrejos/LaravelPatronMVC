@@ -26,7 +26,7 @@
                     </h3>
                 </div-->
                 <div class="card-body">
-                    <form method="POST" action="{{route('noticias.store')}}">
+                    <form method="POST" action="{{ route('noticias.store') }}">
                         @csrf
                         <div class="form-group">
                             <label>
