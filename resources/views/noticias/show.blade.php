@@ -10,7 +10,7 @@
     <h1>
         {{ $noticia -> titulo}}
     </h1>
-    <p>
+    <p class="disabled">
         {{ $noticia -> cuerpo}}
     </p>
 </body>

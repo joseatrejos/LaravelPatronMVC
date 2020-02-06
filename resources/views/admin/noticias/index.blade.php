@@ -65,16 +65,22 @@
                                     <td>
                                         {{ $noticia -> titulo }}
                                     </td>
+
                                     <td>
-                                        <a href="#" class="btn btn-primary">
+                                        <!-- Show -->
+                                        <a href="{{ route('noticias.show', $noticia -> id) }}" class="btn btn-primary">
                                             <i class="fas fa-eye"></i>
                                         </a>
-                                        <a href="{{route('noticias.edit', $noticia -> id)}}" class="btn btn-success">
+                                            
+                                        <!-- Edit -->
+                                        <a href="{{ route('noticias.edit', $noticia -> id) }}" class="btn btn-success">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        <a href="#" class="btn btn-danger">
+                                            
+                                        <!-- Delete -->
+                                        <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
                                             <i class="fas fa-times"></i>
-                                        </a>
+                                        </button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -82,6 +88,36 @@
                     </table>
                 </div>
             </div>
+
+            <!-- Modal -->
+            <form method="POST" action="{{route('noticias.destroy', $noticia -> id)}}">
+                @csrf
+                @method('DELETE')
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">¿Seguro de que deseas borrar el registro?</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                En caso de borrarlo, no habrá manera de recuperarlo.
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                    Discard
+                                </button>
+
+                                <button type="button" class="btn btn-primary">
+                                    Delete
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>
