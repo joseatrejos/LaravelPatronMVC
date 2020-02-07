@@ -78,9 +78,9 @@
                                         </a>
                                             
                                         <!-- Delete -->
-                                        <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+                                        <a href="javascript:;" data-toggle="modal" onclick="deleteData({{ $noticia -> id  }})" data-target="#delete-modal" class="btn btn-danger delete-modal-btn">
                                             <i class="fas fa-times"></i>
-                                        </button>
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -90,27 +90,27 @@
             </div>
 
             <!-- Modal -->
-            <form method="POST" action="{{route('noticias.destroy', $noticia -> id)}}">
+            <form method="POST" id="deleteForm" action="{{route('noticias.destroy', $noticia -> id)}}">
                 @csrf
                 @method('DELETE')
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">¿Seguro de que deseas borrar el registro?</h5>
+                                <h5 class="modal-title" id="deleteModalLabel">¿Seguro de que deseas borrar el registro?</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
-                                En caso de borrarlo, no habrá manera de recuperarlo.
+                                
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">
                                     Discard
                                 </button>
 
-                                <button type="button" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary" name="delete_noticia" onclick="formSubmit()">
                                     Delete
                                 </button>
                             </div>
@@ -121,9 +121,24 @@
         </div>
     </div>
 </div>
+
 @endsection
 
 
 @section('mainjs')
+<script type="text/javascript">
+    function deleteData(id)
+    {
+        var id = id;
+        var url = '{{ route("noticias.destroy", ":id") }}';
+        url = url.replace(':id', id);
+        $("#deleteForm").attr('action', url);
+    }
 
+    function formSubmit()
+    {
+        $("#deleteForm").submit();
+        $("#modal-body").innerHTML("En caso de borrar la noticia no habrá manera de recuperarla.")
+    }
+</script>
 @endsection
