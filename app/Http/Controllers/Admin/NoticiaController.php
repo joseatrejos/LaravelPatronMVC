@@ -143,3 +143,5 @@ class NoticiaController extends Controller
         return redirect() -> route('noticias.index') -> with('failure', 'No se encontró la noticia');
     }
 }
+
+?>
