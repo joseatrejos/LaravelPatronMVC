@@ -26,7 +26,7 @@
                     </h3>
                 </div-->
                 <div class="card-body">
-                    <form method="POST" action="{{ route('noticias.store') }}">
+                    <form method="POST" enctype="multipart/form-data" action="{{ route('noticias.store') }}">
                         @csrf
                         <div class="form-group">
                             <label>
@@ -34,6 +34,14 @@
                             </label>
 
                             <input type="text" name="txtTitulo" class="form-control"></input>
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                Imagen
+                            </label>
+
+                            <input type="file" name="imgPortada" class="form-control"></input>
                         </div>
 
                         <div class="form-group">

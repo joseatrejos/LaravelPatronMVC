@@ -54,7 +54,7 @@
                                     Noticia
                                 </th>
                                 <th>
-                                    Acciones
+                                    Cuerpo
                                 </th>
                             </tr>
                         </thead>
@@ -64,6 +64,9 @@
                                 <tr>
                                     <td>
                                         {{ $noticia -> titulo }}
+                                    </td>
+                                    <td>
+                                        {{ $noticia -> cuerpo }}
                                     </td>
 
                                     <td>
@@ -78,7 +81,7 @@
                                         </a>
                                             
                                         <!-- Delete -->
-                                        <a href="javascript:;" data-toggle="modal" onclick="deleteData({{ $noticia -> id  }})" data-target="#delete-modal" class="btn btn-danger delete-modal-btn">
+                                        <a href="javascript:;" data-toggle="modal" onclick="deleteData({{ $noticia -> id }})" data-target="#delete-modal" class="btn btn-danger delete-modal-btn">
                                             <i class="fas fa-times"></i>
                                         </a>
                                     </td>

@@ -5,7 +5,7 @@
 @endsection
 
 @section('titulo', 'Administración | Titulo')
-@section('subtitulo', 'Lista de Noticias')
+@section('subtitulo', 'Lista de Usuarios')
 
 
 @section('breadcrumbs')
@@ -52,7 +52,10 @@
                                     Usuario
                                 </th>
                                 <th>
-                                    Acciones
+                                    Correo
+                                </th>
+                                <th>
+                                    Contraseña
                                 </th>
                             </tr>
                         </thead>
@@ -61,18 +64,29 @@
                             @foreach($users as $user)
                                 <tr>
                                     <td>
-                                        {{$user -> username}}
+                                        {{$user -> name}}
                                     </td>
                                     <td>
-                                        <button class="btn btn-primary">
+                                        {{$user -> email}}
+                                    </td>
+                                    <td>
+                                        {{$user -> password}}
+                                    </td>
+                                    <td>
+                                        <!-- Show -->
+                                        <a href="{{ route('users.show', $user -> id) }}" class="btn btn-primary">
                                             <i class="fas fa-eye"></i>
-                                        </button>
-                                        <button class="btn btn-success">
+                                        </a>
+                                            
+                                        <!-- Edit -->
+                                        <a href="{{ route('users.edit', $user -> id) }}" class="btn btn-success">
                                             <i class="fas fa-edit"></i>
-                                        </button>
-                                        <button class="btn btn-danger">
+                                        </a>
+                                            
+                                        <!-- Delete -->
+                                        <a href="javascript:;" data-toggle="modal" onclick="deleteData({{ $user -> id }})" data-target="#delete-modal" class="btn btn-danger delete-modal-btn">
                                             <i class="fas fa-times"></i>
-                                        </button>
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -80,6 +94,36 @@
                     </table>
                 </div>
             </div>
+
+            <!-- Modal -->
+            <form method="POST" id="deleteForm" action="{{route('users.destroy', $user -> id)}}">
+                @csrf
+                @method('DELETE')
+                <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="deleteModalLabel">¿Seguro de que deseas borrar el registro?</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                    Discard
+                                </button>
+
+                                <button type="submit" class="btn btn-primary" name="delete_user" onclick="formSubmit()">
+                                    Delete
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>
@@ -87,5 +131,19 @@
 
 
 @section('mainjs')
+<script type="text/javascript">
+    function deleteData(id)
+    {
+        var id = id;
+        var url = '{{ route("users.destroy", ":id") }}';
+        url = url.replace(':id', id);
+        $("#deleteForm").attr('action', url);
+    }
 
+    function formSubmit()
+    {
+        $("#deleteForm").submit();
+        $("#modal-body").innerHTML("En caso de borrar al usuario no habrá manera de recuperarlo.")
+    }
+</script>
 @endsection

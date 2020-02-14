@@ -47,7 +47,8 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $user = new User();
-        $user -> username = $request -> input('txtUsername');
+        $user -> name = $request -> input('txtUsername');
+        $user -> email = $request -> input('txtEmail');
         $user -> password = $request -> input('txtPassword');
         if($user -> save())
         {
@@ -112,7 +113,8 @@ class UserController extends Controller
         $user = User::find($id);
         if($user)
         {
-            $user -> username = $request -> input('txtUsername');
+            $user -> name = $request -> input('txtUsername');
+            $user -> email = $request -> input('txtEmail');
             $user -> password = $request -> input('txtPassword');
 
             if($user -> save())
