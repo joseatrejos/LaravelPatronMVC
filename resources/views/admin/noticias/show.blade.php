@@ -27,7 +27,7 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">
-                        Editar noticia: {{ $noticia -> id}}
+                        Noticia: {{ $noticia -> titulo}}
                     </h3>
                 </div>
                 <div class="card-body">

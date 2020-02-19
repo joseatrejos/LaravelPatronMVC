@@ -140,9 +140,9 @@ class UserController extends Controller
         
         if($user) {
             if($user -> delete()){
-                return redirect() -> route('usuarios.index') -> with('exito', 'Usuario eliminado exitosamente');
+                return redirect() -> route('users.index') -> with('exito', 'Usuario eliminado exitosamente');
             }
-            return redirect() -> route('usuarios.index') ->with('failure', 'No se pudo eliminar al usuario');
+            return redirect() -> route('users.index') ->with('failure', 'No se pudo eliminar al usuario');
         }
         return redirect() -> route('users.index') -> with('failure', 'No se encontró al usuario');
     }

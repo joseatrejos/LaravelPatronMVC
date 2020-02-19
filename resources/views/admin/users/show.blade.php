@@ -6,7 +6,7 @@
 @endsection
 
 
-@section('titulo', ' Administración | ' . $noticia -> titulo)
+@section('titulo', ' Usuario | ' . $user -> name)
 
 
 @section('breadcrumbs')
@@ -17,8 +17,8 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-3">
-            <a href="{{ route('noticias.index') }}" class="btn btn-primary">
-                <i class="fas fa-arrow-left"></i> Volver a la Lista de Noticias
+            <a href="{{ route('users.index') }}" class="btn btn-primary">
+                <i class="fas fa-arrow-left"></i> Volver a la Lista de Usuarios
             </a>
         </div><br/><br/><br/>
     </div>
@@ -27,16 +27,21 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">
-                        Editar noticia: {{ $noticia -> id}}
+                        Editar usuario: {{ $user -> id}}
                     </h3>
                 </div>
                 <div class="card-body">
                     <h1>
-                        {{$noticia->titulo}}
+                        {{$user->name}}
                     </h1>
+                    <br/>
+                    
+                    <p>
+                        {{$user->email}}
+                    </p>
 
                     <p>
-                        {{$noticia->cuerpo}}
+                        {{$user->password}}
                     </p>
                 </div>
             </div>
