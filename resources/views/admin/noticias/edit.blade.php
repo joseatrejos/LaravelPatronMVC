@@ -20,7 +20,7 @@
             <a href="{{ route('noticias.index') }}" class="btn btn-primary">
                 <i class="fas fa-arrow-left"></i> Volver a la Lista de Noticias
             </a>
-        </div><br/><br/><br/>
+        </div><br /><br /><br />
     </div>
     <div class="row">
         <div class="col-md-12">
@@ -42,16 +42,32 @@
                             <input type="text" name="txtTitulo" class="form-control" value="{{ $noticia -> titulo }}"></input>
                         </div>
 
+
+                        @if($noticia -> portada)
+                            <img src="storage/portadas/{{ $noticia -> portada}}" style="width: 75px; height:auto;">
+                        @else
+                            <p>
+                                No hay imagen cargada
+                            </p>
+                        @endif
+                        <div class="form-group">
+                            <label>
+                                Imagen de Portada
+                            </label>
+
+                            <input type="file" name="imgPortada" class="form-control"></input>
+                        </div>
+
                         <div class="form-group">
                             <label>
                                 Cuerpo
                             </label>
-                            
+
                             <textarea rows="12" name="txtCuerpo" class="form-control">{{ $noticia -> cuerpo }}</textarea>
                         </div>
 
                         <div class="form-group">
-                            <button class="btn btn-primary" >
+                            <button class="btn btn-primary">
                                 Actualizar
                             </button>
                         </div>

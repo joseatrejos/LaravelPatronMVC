@@ -38,6 +38,8 @@
                     <p>
                         {{$noticia->cuerpo}}
                     </p>
+
+                    <img src="public/portada/{{ $noticia -> portada}}" style="width: 75px; height:auto;"/>
                 </div>
             </div>
         </div>

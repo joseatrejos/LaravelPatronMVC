@@ -48,10 +48,12 @@ class NoticiaController extends Controller
         $noticia = new Noticia();
         $noticia -> titulo = $request -> input('txtTitulo');
         $noticia -> cuerpo = $request -> input('txtCuerpo');
+
         if($request -> hasFile('imgPortada'))
         {
             $archivoPortada = $request -> file('imgPortada');
-            $rutaArchivo = $archivoPortada->store('imgPortada');
+            $rutaArchivo = $archivoPortada->store('public/portada/');
+            $rutaArchivo = substr($rutaArchivo, 16);
             $noticia -> portada = $rutaArchivo;
         }
 
