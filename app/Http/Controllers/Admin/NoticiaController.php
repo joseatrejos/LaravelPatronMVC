@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 use App\Noticia;
 
@@ -52,7 +53,7 @@ class NoticiaController extends Controller
         if($request -> hasFile('imgPortada'))
         {
             $archivoPortada = $request -> file('imgPortada');
-            $rutaArchivo = $archivoPortada->store('public/portada/');
+            $rutaArchivo = $archivoPortada->store('public/portadas/');
             $rutaArchivo = substr($rutaArchivo, 16);
             $noticia -> portada = $rutaArchivo;
         }
@@ -122,6 +123,22 @@ class NoticiaController extends Controller
         {
             $noticia -> titulo = $request -> input('txtTitulo');
             $noticia -> cuerpo = $request -> input('txtCuerpo');
+
+            if($request -> hasFile('imgPortada'))
+            {
+                Storage::delete('public/portadas/', $noticia -> portada);
+
+                $archivoPortada = $request -> file('imgPortada');
+                $archivoPortada -> store('imgPortada');
+
+                $textoArchivoSeparado = explode('.', $archivoPortada -> getClientOriginalName());
+                $extension = $textoArchivoSeparado[count($textoArchivoSeparado) - 1];
+                
+                $rutaArchivo = Storage::putFileAs('public/portadas', $archivoPortada, $noticia -> id . time() . "portada" . $extension);
+                $rutaArchivo = substr($rutaArchivo, 16);
+                $noticia -> portada = $rutaArchivo;
+            }
+
             if($noticia -> save())
             {
                 return redirect() -> route('noticias.edit', $id) -> with('success', 'La noticia se actualizó exitosamente');

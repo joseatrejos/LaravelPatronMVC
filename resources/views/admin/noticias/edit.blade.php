@@ -44,19 +44,21 @@
 
 
                         @if($noticia -> portada)
-                            <img src="storage/portadas/{{ $noticia -> portada}}" style="width: 75px; height:auto;">
+                            <a href="storage/portadas/{{ noticia -> portada }}" target="_blank">
+                                <img src="/storage/portadas/{{ $noticia -> portada}}" style="width: 60px; height:auto;">
+                            </a>
                         @else
                             <p>
                                 No hay imagen cargada
                             </p>
                         @endif
-                        <div class="form-group">
+                        <!--div class="form-group">
                             <label>
                                 Imagen de Portada
                             </label>
 
                             <input type="file" name="imgPortada" class="form-control"></input>
-                        </div>
+                        </div-->
 
                         <div class="form-group">
                             <label>
